@@ -30,6 +30,6 @@ public class Practica {
         int result = num1*num2*num3;
         
         
-        System.out.println("El resultado de "+nombre+apellido+" en su multiplicacion fue de: "+result);
+        System.out.println("Hola"+nombre+apellido+"como estas?, el resultado de su multiplicacion fue de: "+result);
     }
 }
