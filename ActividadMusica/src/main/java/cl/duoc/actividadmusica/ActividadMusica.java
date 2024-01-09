@@ -22,8 +22,11 @@ public class ActividadMusica {
         
         musica2.setTitulo("Unconditionally");
         musica2.setArtista("Katy Perry");
-        musica2.setDuracion(0, 5, 56);
+        musica2.setDuracion(6, 20);
+        musica2.Adelantar(20);
+        musica2.Retroceder(12);
         musica2.setFavorita(true);
+        musica2.setDescarga(true);
         
         
         

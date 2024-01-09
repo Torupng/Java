@@ -15,19 +15,22 @@ public class Cancion {
     private String artista;
     private LocalTime duracion;
     private boolean favorita;
+    private boolean descarga;
 
     public Cancion() {
         this.titulo = "Tomboy";
         this.artista = "(G)idle";
         this.duracion = LocalTime.of(0, 4, 14);
         this.favorita = false;
+        this.descarga = false;
     }
     
-    public Cancion(String titulo, String artista, LocalTime duracion, boolean favorita) {
+    public Cancion(String titulo, String artista, LocalTime duracion, boolean favorita, boolean descarga) {
         this.titulo = titulo;
         this.artista = artista;
         this.duracion = duracion;
         this.favorita = favorita;
+        this.descarga = descarga;
     }
 
     public String getTitulo() {
@@ -54,14 +57,8 @@ public class Cancion {
         this.duracion = duracion;
     }
     
-    public void setDuracion(int hora, int minuto, int segundo) {
-        this.duracion = LocalTime.of(hora, minuto, segundo);
-         
-            if(minuto > 4){
-                System.out.println("duracion larga");
-            }else{
-                System.out.println("duracion normal");
-            }
+    public void setDuracion(int minuto, int segundo) {
+        this.duracion = LocalTime.of(0, minuto, segundo);
     }
 
     public boolean isFavorita() {
@@ -71,10 +68,33 @@ public class Cancion {
     public void setFavorita(boolean favorita) {
         this.favorita = favorita;
     }
+
+    public boolean isDescarga() {
+        return descarga;
+    }
+
+    public void setDescarga(boolean descarga) {
+        this.descarga = descarga;
+    }
+
+    public void Adelantar(int segundo){
+        this.duracion.plusSeconds(segundo);
+    }
+    
+    public void Retroceder(int segundo){
+        this.duracion.minusSeconds(segundo);
+    }
+    
+    public String isLarga(){
+        return (this.duracion.getMinute() >= 5 ? "Es larga" : "No es larga");//es un if pero de una sola linea
+        //? --> si es igual o mayor a 5
+        //: --> representa else
+    }
+    
     
     @Override
     public String toString(){
-        String mensaje = "titulo:"+titulo+" Artista:"+artista+" Duración:"+duracion+" favoritos:"+favorita;
+        String mensaje = titulo+"\n"+artista+"\n"+duracion+"\nfavorita:"+favorita+"\ndescargada:"+descarga+"\n------------------------------";
         return mensaje;
     }
     
