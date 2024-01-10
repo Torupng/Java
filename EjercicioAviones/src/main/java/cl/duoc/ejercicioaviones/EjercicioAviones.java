@@ -5,6 +5,8 @@
 
 package cl.duoc.ejercicioaviones;
 
+import cl.duoc.ejercicioaviones.models.Pasajero;
+
 /**
  *
  * @author Cetecom
@@ -12,6 +14,16 @@ package cl.duoc.ejercicioaviones;
 public class EjercicioAviones {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        Pasajero cliente = new Pasajero();
+        
+        cliente.setNombre("Manuel");
+        cliente.setRut("21364818-9");
+        cliente.setFechaNacimiento(2004, 7, 24);
+        cliente.setTelefono(934567457);
+        cliente.setEmail("manuelbastidas@gmail.com");
+        cliente.setVetado(false);
+        
+        System.out.println(cliente);
     }
 }

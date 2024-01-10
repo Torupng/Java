@@ -4,13 +4,15 @@
  */
 package cl.duoc.ejercicioaviones.utils;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Cetecom
  */
 public class Validacion {
     public static boolean valMail(String dato){
-        return(Integer.parseInt(dato) > 0);
+        return(dato.length()  > 0);
     }
     
     public static boolean valTelefono(long numero){
@@ -18,6 +20,11 @@ public class Validacion {
     }
     
     public static boolean valRun(String run){
-        return(Integer.parseInt(run) <= 10);
+        return(run.length() <= 10);
+    }
+    
+    public static boolean valFecha(LocalDate date){
+        LocalDate fecha = LocalDate.now();
+        return(date.isBefore(fecha));
     }
 }

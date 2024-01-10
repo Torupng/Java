@@ -6,6 +6,7 @@ package cl.duoc.ejercicioaviones.models;
 
 import cl.duoc.ejercicioaviones.utils.Validacion;
 import java.time.LocalDate;
+import java.time.Month;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 public class Pasajero {
     private int id;
     private String nombre;
+    private String rut;
     private LocalDate fechaNacimiento;
     private long telefono;
     private String email;
@@ -22,15 +24,17 @@ public class Pasajero {
     public Pasajero() {
         this.id = 0;
         this.nombre = "";
+        this.rut = "";
         this.fechaNacimiento = LocalDate.now();
         this.telefono = 0;
         this.email = "";
         this.vetado = false;
     }
     
-    public Pasajero(int id, String nombre, LocalDate fechaNacimiento, long telefono, String email, boolean vetado) {
+    public Pasajero(int id, String nombre,String rut, LocalDate fechaNacimiento, long telefono, String email, boolean vetado) {
         this.id = id;
         this.nombre = nombre;
+        this.rut = rut;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.email = email;
@@ -53,6 +57,20 @@ public class Pasajero {
         this.nombre = nombre;
     }
 
+    public String getRut(){
+        return rut;
+    }
+    
+    public void setRut(String rut){
+        boolean valrun = Validacion.valRun(rut);
+        
+        if(valrun){
+            this.rut = rut;
+        }else{
+            System.out.println("El rut debe tener 9 digitos contando el guión");
+        }
+    }
+    
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -60,7 +78,17 @@ public class Pasajero {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
+    
+    public void setFechaNacimiento(int anio, int mes, int dia) {
+        boolean fechas = Validacion.valFecha(fechaNacimiento);
+        
+        if(fechas){
+            this.fechaNacimiento = LocalDate.of(dia, mes, anio);
+        }else{
+            System.out.println("Ocurrio un error al ingresar la fecha");
+        }
+    }
+    
     public long getTelefono() {
         return telefono;
     }
@@ -80,7 +108,13 @@ public class Pasajero {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        boolean correo = Validacion.valMail(email);
+        
+        if(correo){
+            this.email = email;
+        }else{
+            System.out.println("error al registrar email");
+        }
     }
 
     public boolean isVetado() {
@@ -93,7 +127,7 @@ public class Pasajero {
     
     @Override
     public String toString(){
-        return "nombre del pasajero:"+nombre+"\nFecha de nacimiento:"+fechaNacimiento+"\nTelefono:"+telefono
+        return "nombre del pasajero:"+nombre+"\nRut:"+rut+"\nFecha de nacimiento:"+fechaNacimiento+"\nTelefono:"+telefono
                 +"\nCorreo:"+email+"\nVetado:"+vetado+"\n-----------------------------------------";
     }
 }

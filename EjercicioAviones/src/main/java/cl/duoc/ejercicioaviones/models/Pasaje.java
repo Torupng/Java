@@ -4,6 +4,7 @@
  */
 package cl.duoc.ejercicioaviones.models;
 
+import cl.duoc.ejercicioaviones.utils.Validacion;
 import java.time.LocalDate;
 
 /**
@@ -62,6 +63,16 @@ public class Pasaje {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+    
+    public void setFecha(int anio, int mes, int dia) {
+        boolean fechas = Validacion.valFecha(fecha);
+        
+        if(fechas){
+            this.fecha = LocalDate.of(dia, mes, anio);
+        }else{
+            System.out.println("Ocurrio un error al ingresar la fecha");
+        }
     }
 
     public String getCodigoVuelo() {

@@ -4,6 +4,7 @@
  */
 package cl.duoc.ejercicioaviones.models;
 
+import cl.duoc.ejercicioaviones.utils.Validacion;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -90,6 +91,16 @@ public class Avion {
 
     public void setFechaUltimoVuelo(LocalDate fechaUltimoVuelo) {
         this.fechaUltimoVuelo = fechaUltimoVuelo;
+    }
+    
+    public void setFechaUltimoVuelo(int anio, int mes, int dia) {
+        boolean fechas = Validacion.valFecha(fechaUltimoVuelo);
+        
+        if(fechas){
+            this.fechaUltimoVuelo = LocalDate.of(dia, mes, anio);
+        }else{
+            System.out.println("Ocurrio un error al ingresar la fecha");
+        }
     }
 
     public String getCarguero() {
