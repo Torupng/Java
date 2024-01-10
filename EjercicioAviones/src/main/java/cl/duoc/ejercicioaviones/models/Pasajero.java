@@ -4,6 +4,7 @@
  */
 package cl.duoc.ejercicioaviones.models;
 
+import cl.duoc.ejercicioaviones.utils.Validacion;
 import java.time.LocalDate;
 
 /**
@@ -14,7 +15,7 @@ public class Pasajero {
     private int id;
     private String nombre;
     private LocalDate fechaNacimiento;
-    private int telefono;
+    private long telefono;
     private String email;
     private boolean vetado;
 
@@ -27,7 +28,7 @@ public class Pasajero {
         this.vetado = false;
     }
     
-    public Pasajero(int id, String nombre, LocalDate fechaNacimiento, int telefono, String email, boolean vetado) {
+    public Pasajero(int id, String nombre, LocalDate fechaNacimiento, long telefono, String email, boolean vetado) {
         this.id = id;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -60,12 +61,18 @@ public class Pasajero {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTelefono(long telefono) {
+        boolean validacion = Validacion.valTelefono(telefono);
+        
+        if(validacion){
+            this.telefono = telefono;
+        }else{
+            System.out.println("Número de telefono debe tener 9 digitos");
+        }
     }
 
     public String getEmail() {
