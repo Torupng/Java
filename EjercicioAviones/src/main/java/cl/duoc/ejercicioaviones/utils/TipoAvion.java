@@ -2,15 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cl.duoc.ejercicioaviones.models;
+package cl.duoc.ejercicioaviones.utils;
 
 /**
  *
- * @author Cetecom
+ * @author mangl
  */
-public enum UnidadMedida {
-    Gramos,
-    Unidad,
-    Tonelada,
-    Kilos
+public enum TipoAvion {
+    
 }
