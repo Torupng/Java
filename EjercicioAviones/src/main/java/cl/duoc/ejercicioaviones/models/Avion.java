@@ -4,6 +4,7 @@
  */
 package cl.duoc.ejercicioaviones.models;
 
+import cl.duoc.ejercicioaviones.utils.TipoAvion;
 import cl.duoc.ejercicioaviones.utils.Validacion;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,11 +19,13 @@ public class Avion {
     private String nombre;
     private LocalTime horasVuelos;
     private boolean listo;
-    private String datosExtra;
     private LocalDate fechaUltimoVuelo;
-    private String carguero;
-    private UnidadMedida tonelaje;
+    private TipoAvion tipo;
+    
+    
+    private int tonelaje;
     private boolean ultraSonico;
+    private String datosExtra;
 
     public Avion() {
         this.id = id++;
@@ -31,20 +34,18 @@ public class Avion {
         this.listo = false;
         this.datosExtra = "-----------";
         this.fechaUltimoVuelo = LocalDate.now();
-        this.carguero = "-------------";
-        this.tonelaje = UnidadMedida.Tonelada;
+        this.tonelaje = 0;
         this.ultraSonico = false;
     }
     
     
-    public Avion(int id, String nombre, LocalTime horasVuelos, boolean listo, String datosExtra, LocalDate fechaUltimoVuelo, String carguero, UnidadMedida tonelaje, boolean ultraSonico) {
+    public Avion(int id, String nombre, LocalTime horasVuelos, boolean listo, String datosExtra, LocalDate fechaUltimoVuelo, int tonelaje, boolean ultraSonico) {
         this.id = id++;
         this.nombre = nombre;
         this.horasVuelos = horasVuelos;
         this.listo = listo;
         this.datosExtra = datosExtra;
         this.fechaUltimoVuelo = fechaUltimoVuelo;
-        this.carguero = carguero;
         this.tonelaje = tonelaje;
         this.ultraSonico = ultraSonico;
     }
@@ -103,19 +104,11 @@ public class Avion {
         }
     }
 
-    public String getCarguero() {
-        return carguero;
-    }
-
-    public void setCarguero(String carguero) {
-        this.carguero = carguero;
-    }
-
-    public UnidadMedida getTonelaje() {
+    public int getTonelaje() {
         return tonelaje;
     }
 
-    public void setTonelaje(UnidadMedida tonelaje) {
+    public void setTonelaje(int tonelaje) {
         this.tonelaje = tonelaje;
     }
 
@@ -129,8 +122,19 @@ public class Avion {
     
     @Override
     public String toString(){
-        return "Nombre del avión:"+nombre+"\nTotal de horas en vuelo:"+horasVuelos+"\nListo para volar:"+listo
-                +"\nDatos extra:"+datosExtra+"\nFecha del utimo vuelo:"+fechaUltimoVuelo+"\nCarguero:"+carguero
-                +"\nTonelaje:"+tonelaje.toString()+"\nUltra Sonico:"+ultraSonico+"\n-----------------------------------------";
+        String mensaje = "Nombre del avión:"+nombre+"\nTotal de horas en vuelo:"+horasVuelos+"\nListo para volar:"+listo
+                +"\nDatos extra:"+fechaUltimoVuelo;
+        
+        if(this.tipo == TipoAvion.avion){
+            mensaje += "\nDatos extra:"+datosExtra;
+        }else if(this.tipo == TipoAvion.avioneta){
+            mensaje += "\nUltra Sonico:"+ultraSonico;
+        }else if(this.tipo == TipoAvion.carguero){
+            mensaje += "\nTonelaje:"+tonelaje;
+        }
+        
+        mensaje += "\n-----------------------------------------";
+        
+        return mensaje;
     }
 }
