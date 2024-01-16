@@ -27,13 +27,16 @@ public class Zoologico {
         visita.setRut("13564112-k");
         visita.setFechaNacimiento(1997, 5, 22);
         visita.setAnimalFavorito(true);
+        visita.setNumeroCliente(9123756);
         
-        nueva.setFecha(2023, 2, 11);
+        //----------------------------------------------------
+        nueva.setFecha(2024, 2, 14);
         nueva.setTipoEntrada(TipoEntrada.normal);
         nueva.setValor(20000);
         
+        //-----------------------------------------------------
         animal.setNombre("Luna");
-        animal.setEdad(2013, 5, 24);
+        animal.setEdad(1999, 5, 23);
         animal.setTipo(TipoAnimal.pinguino);
         animal.setTipoClima("Frio");
         

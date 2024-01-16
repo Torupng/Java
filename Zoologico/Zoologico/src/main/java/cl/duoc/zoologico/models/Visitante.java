@@ -85,14 +85,14 @@ public class Visitante {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(int yyyy, int mm, int dd) {
-        this.fechaNacimiento = LocalDate.of(yyyy, mm, dd);
+    public void setFechaNacimiento(int jear, int mm, int dd) {
+        this.fechaNacimiento = LocalDate.of(jear, mm, dd);
     }
     
     @Override
     public String toString(){
         String mensaje = "Rut visitante:"+rut+"\nNumero de telefono:"+numeroCliente
-                +"\nNombre:"+nombre+apellido+"\nAnimal favorito:"+animalFavorito
+                +"\nNombre:"+nombre+" "+apellido+"\nAnimal favorito:"+animalFavorito
                 +"\nEdad:"+fechaNacimiento;
         
         return mensaje;

@@ -71,14 +71,13 @@ public class Entrada {
     public LocalDate getFecha() {
         return fecha;
     }
-
-    public void setFecha(int anio, int mes, int dia) {
+    
+    public void setFecha(int anio, int mes, int dia){
         LocalDate fecha = LocalDate.of(anio, mes, dia);
-        
         if(Validacion.ValFechaEntrada(fecha)){
             this.fecha = fecha;
         }else{
-            System.out.println("Fecha ingreada es menor a la fecha de hoy");
+            System.out.println("fecha erronea");
         }
     }
 
@@ -104,9 +103,9 @@ public class Entrada {
     
     @Override
     public String toString(){
-        String mensaje = "Correlativo de entrada:"+correlativo+"\nVisitante:"+visita
-                +"\nTipo de entrada:"+tipoEntrada+"\nFecha:"+fecha+"\nIncluye colacion"+colacion
-                +"\nValor:"+valor;
+        String mensaje = "\n------------------------------------"+"\nCorrelativo de entrada:"+correlativo+"\nVisitante:"+visita
+                +"\nTipo de entrada:"+tipoEntrada+"\nFecha:"+fecha+"\nIncluye colacion:"+colacion
+                +"\nValor:"+valor+"\n------------------------------------";
         
         return mensaje;
     }

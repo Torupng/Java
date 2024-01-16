@@ -64,7 +64,7 @@ public class Animal {
     }
 
     public void setEdad(int anio, int mes, int dia) {
-        this.edad = LocalDate.of(dia, mes, anio);
+        this.edad = LocalDate.of(anio, mes, dia);
     }
 
     public String getTipoClima() {
@@ -78,7 +78,8 @@ public class Animal {
     @Override
     public String toString(){
         String mensaje = "Numero de resgistro:"+numRegistro+"\nNombre:"+nombre
-                +"\nTipo:"+tipo+"\nEdad:"+edad+"\nTipo de clima donde vive:"+tipoClima;
+                +"\nTipo:"+tipo+"\nEdad:"+edad+"\nTipo de clima donde vive:"+tipoClima
+                +"\n------------------------------------";
         
         return mensaje;
     }
