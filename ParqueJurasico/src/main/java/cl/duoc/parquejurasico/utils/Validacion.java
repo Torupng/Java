@@ -9,5 +9,13 @@ package cl.duoc.parquejurasico.utils;
  * @author Cetecom
  */
 public class Validacion {
-   
+    
+    public boolean rugir(boolean ruge){
+        if(ruge == true){
+            System.out.println("Ruge?: si ruge");
+        }else{
+            System.out.println("Ruge?: no ruge");
+        }
+        return ruge;
+    }
 }

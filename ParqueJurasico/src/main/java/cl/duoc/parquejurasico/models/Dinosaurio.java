@@ -4,6 +4,8 @@
  */
 package cl.duoc.parquejurasico.models;
 
+import cl.duoc.parquejurasico.utils.Validacion;
+
 /**
  *
  * @author Cetecom
@@ -14,7 +16,6 @@ public class Dinosaurio {
     private String periodo;
     private int cantPatas;
     private boolean rugido;
-    
 
     public Dinosaurio() {
         this.id = id+1;
@@ -69,18 +70,20 @@ public class Dinosaurio {
     }
     
     public void setRugido(boolean rugido){
-        this.rugido = rugido;
-        if(rugido == true){
-            System.out.println("Si ruge");
-        }else{
-            System.out.println("No ruge");
-        }
+        Validacion val = new Validacion();
+        this.rugido = val.rugir(rugido);
     }
 
     @Override
     public String toString(){
         String mensaje = "\nId:"+id+"\nNombre:"+nombre+"\nPeriodo:"+periodo+"\nCantidad de patas:"+cantPatas
-                +"\nRuge?:"+rugido;
+                +"\nRuge?:";
+                
+                if(rugido == true){
+                    mensaje += "Si ruge";
+                }else{
+                    mensaje += "No ruge";
+                }
         return mensaje;
     }
     
