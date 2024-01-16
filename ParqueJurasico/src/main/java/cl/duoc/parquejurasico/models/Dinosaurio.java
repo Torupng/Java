@@ -4,7 +4,6 @@
  */
 package cl.duoc.parquejurasico.models;
 
-import cl.duoc.parquejurasico.utils.Validacion;
 
 /**
  *
@@ -15,22 +14,19 @@ public class Dinosaurio {
     private String nombre;
     private String periodo;
     private int cantPatas;
-    private boolean rugido;
 
     public Dinosaurio() {
         this.id = id+1;
         this.nombre = "";
         this.periodo = "";
         this.cantPatas = 0;
-        this.rugido = false;
     }
     
-    public Dinosaurio(int id, String nombre, String periodo, int cantPatas, boolean rugido) {
+    public Dinosaurio(int id, String nombre, String periodo, int cantPatas) {
         this.id = id;
         this.nombre = nombre;
         this.periodo = periodo;
         this.cantPatas = cantPatas;
-        this.rugido = rugido;
     }
 
     public int getId() {
@@ -65,26 +61,17 @@ public class Dinosaurio {
         this.cantPatas = cantPatas;
     }
     
-    public boolean getRugido(){
-        return rugido;
-    }
     
-    public void setRugido(boolean rugido){
-        Validacion val = new Validacion();
-        this.rugido = val.rugir(rugido);
-    }
 
     @Override
     public String toString(){
-        String mensaje = "\nId:"+id+"\nNombre:"+nombre+"\nPeriodo:"+periodo+"\nCantidad de patas:"+cantPatas
-                +"\nRuge?:";
-                
-                if(rugido == true){
-                    mensaje += "Si ruge";
-                }else{
-                    mensaje += "No ruge";
-                }
+        String mensaje = "\nId:"+id+"\nNombre:"+nombre+"\nPeriodo:"+periodo+"\nCantidad de patas:"+cantPatas;
         return mensaje;
+    }
+    
+    
+    public void Rugir(){
+        
     }
     
 }

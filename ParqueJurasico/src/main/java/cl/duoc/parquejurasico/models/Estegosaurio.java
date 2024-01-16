@@ -16,8 +16,8 @@ public class Estegosaurio extends Dinosaurio{
         this.cantEspinas = 0;
     }
     
-    public Estegosaurio(int cantEspinas, int id, String nombre, String periodo, int cantPatas, boolean rugido) {
-        super(id, nombre, periodo, cantPatas, rugido);
+    public Estegosaurio(int cantEspinas, int id, String nombre, String periodo, int cantPatas) {
+        super(id, nombre, periodo, cantPatas);
         this.cantEspinas = cantEspinas;
     }
 

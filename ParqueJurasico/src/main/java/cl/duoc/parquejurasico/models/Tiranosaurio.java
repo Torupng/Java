@@ -16,8 +16,8 @@ public class Tiranosaurio extends Dinosaurio{
         this.cantColmillos = 0;
     }
 
-    public Tiranosaurio(int cantColmillos, int id, String nombre, String periodo, int cantPatas, boolean rugido) {
-        super(id, nombre, periodo, cantPatas, rugido);
+    public Tiranosaurio(int cantColmillos, int id, String nombre, String periodo, int cantPatas) {
+        super(id, nombre, periodo, cantPatas);
         this.cantColmillos = cantColmillos;
     }
 

@@ -16,8 +16,8 @@ public class Velociraptor extends Dinosaurio{
         this.velocidadCorriendo = 0;
     }
     
-    public Velociraptor(int velocidadCorriendo, int id, String nombre, String periodo, int cantPatas, boolean rugido) {
-        super(id, nombre, periodo, cantPatas, rugido);
+    public Velociraptor(int velocidadCorriendo, int id, String nombre, String periodo, int cantPatas) {
+        super(id, nombre, periodo, cantPatas);
         this.velocidadCorriendo = velocidadCorriendo;
     }
 
