@@ -53,8 +53,8 @@ public class Cancion {
         return duracion;
     }
 
-    public void setDuracion(LocalTime duracion) {
-        this.duracion = duracion;
+    public void setDuracion(int minuto, int segundo) {
+        this.duracion = LocalTime.of(0, minuto, segundo);
     }
 
     public boolean isFavorita() {
@@ -75,7 +75,7 @@ public class Cancion {
 
     @Override
     public String toString() {
-        return "Cancion{" + "titulo=" + titulo + ", artista=" + artista + ", duracion=" + duracion + ", favorita=" + favorita + ", descarga=" + descarga + '}';
+        return "\nCancion:" + titulo + "\nartista:" + artista + "\nduracion:" + duracion + "\nfavorita:" + favorita + "\ndescarga:" + descarga + "\n------------------------";
     }
     
     
