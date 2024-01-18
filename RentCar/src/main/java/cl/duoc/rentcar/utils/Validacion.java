@@ -9,5 +9,6 @@ package cl.duoc.rentcar.utils;
  * @author Cetecom
  */
 public class Validacion {
-    
+    public static void ValVehiculo(String patente){
+    }
 }

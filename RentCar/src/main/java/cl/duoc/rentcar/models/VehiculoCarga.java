@@ -9,23 +9,23 @@ package cl.duoc.rentcar.models;
  * @author Cetecom
  */
 public class VehiculoCarga extends Vehiculo{
-    private float capacidad;
+    private int capacidad;
 
     public VehiculoCarga() {
         super();
         this.capacidad = 0;
     }
 
-    public VehiculoCarga(float capacidad, int id, int precioArriendo, int cantDias, String patente) {
+    public VehiculoCarga(int capacidad, int id, int precioArriendo, int cantDias, String patente) {
         super(id, precioArriendo, cantDias, patente);
         this.capacidad = capacidad;
     }
     
-    public float getCapacidad() {
+    public int getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(float capacidad) {
+    public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
 
