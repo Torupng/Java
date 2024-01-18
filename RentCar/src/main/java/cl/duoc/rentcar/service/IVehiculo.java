@@ -14,5 +14,6 @@ public interface IVehiculo {
     public static final int descuentoCarga = 3;
     public static final int descuentoPasajero = 7;
     
-    public void Boleta();
+    public int BoletaCarga(int valor);
+    public int BoletaPasajero(int valor2);
 }

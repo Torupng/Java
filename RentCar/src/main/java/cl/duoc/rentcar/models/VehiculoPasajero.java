@@ -16,8 +16,8 @@ public class VehiculoPasajero extends Vehiculo{
         this.cantPasajeros = 0;
     }
     
-    public VehiculoPasajero(int cantPasajeros, int id, int precioArriendo, int cantDias) {
-        super(id, precioArriendo, cantDias);
+    public VehiculoPasajero(int cantPasajeros, int id, int precioArriendo, int cantDias, String patente) {
+        super(id, precioArriendo, cantDias, patente);
         this.cantPasajeros = cantPasajeros;
     }
 

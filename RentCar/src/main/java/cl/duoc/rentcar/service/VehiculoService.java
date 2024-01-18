@@ -32,11 +32,31 @@ public class VehiculoService implements IVehiculo{
         System.out.println("-------------------");
     }
     
-    public void BoletaCarga(int valor){
+    @Override
+    public int BoletaCarga(int valor){
         System.out.println("------------------------");
         System.out.println("Detalle de compra");
         int result = valor * IVA / descuentoCarga;
+        int resultIva = valor * IVA;
         System.out.println("Valor sin iva:"+valor);
-        System.out.println("Valor con iva:");
+        System.out.println("Valor con iva:"+resultIva);
+        System.out.println("Descuento vahiculo de carga:"+descuentoCarga+"%");
+        System.out.println("Total:"+result);
+        System.out.println("------------------------");
+        return valor;
+    }
+    
+    @Override
+    public int BoletaPasajero(int valor2){
+        System.out.println("------------------------");
+        System.out.println("Detalle de compra");
+        int result = valor2 * IVA / descuentoPasajero;
+        int resultIva = valor2 * IVA;
+        System.out.println("Valor sin iva:"+valor2);
+        System.out.println("Valor con iva:"+resultIva);
+        System.out.println("Descuento vahiculo de carga:"+descuentoPasajero+"%");
+        System.out.println("Total:"+result);
+        System.out.println("------------------------");
+        return valor2;
     }
 }

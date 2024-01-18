@@ -16,8 +16,8 @@ public class VehiculoCarga extends Vehiculo{
         this.capacidad = 0;
     }
 
-    public VehiculoCarga(float capacidad, int id, int precioArriendo, int cantDias) {
-        super(id, precioArriendo, cantDias);
+    public VehiculoCarga(float capacidad, int id, int precioArriendo, int cantDias, String patente) {
+        super(id, precioArriendo, cantDias, patente);
         this.capacidad = capacidad;
     }
     
