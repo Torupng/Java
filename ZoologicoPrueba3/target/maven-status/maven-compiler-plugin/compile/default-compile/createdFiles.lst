@@ -1,0 +1,7 @@
+cl\duoc\zoologico\utils\TipoEntrada.class
+cl\duoc\zoologico\utils\TipoAnimal.class
+cl\duoc\zoologico\models\Animal.class
+cl\duoc\zoologico\utils\Validacion.class
+cl\duoc\zoologico\models\Entrada.class
+cl\duoc\zoologico\models\Visitante.class
+cl\duoc\zoologico\Zoologico.class
