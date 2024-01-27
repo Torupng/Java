@@ -4,6 +4,10 @@
  */
 package cl.duoc.zoologico;
 
+import cl.duoc.zoologico.gui.AmbienteGUI;
+import cl.duoc.zoologico.gui.AnimalGUI;
+import cl.duoc.zoologico.gui.VisitanteGUI;
+
 /**
  *
  * @author mangl
@@ -26,34 +30,52 @@ public class Zoologico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        entrada = new javax.swing.JMenu();
+        animales = new javax.swing.JMenu();
+        ambientes = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 495, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 338, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Menu");
+        entrada.setText("Entrada");
+        entrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradaActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(entrada);
 
-        jMenuItem1.setText("Pedir entradas");
-        jMenu1.add(jMenuItem1);
+        animales.setText("Registrar animales");
+        animales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animalesActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(animales);
 
-        jMenuItem2.setText("Reporte");
-        jMenu1.add(jMenuItem2);
+        ambientes.setText("Registro de Ambiente");
+        ambientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ambientesActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(ambientes);
 
-        jMenuBar1.add(jMenu1);
+        jMenu4.setText("Reportes");
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -61,15 +83,36 @@ public class Zoologico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktop)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktop)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaActionPerformed
+        // TODO add your handling code here:
+        VisitanteGUI visita = new VisitanteGUI();
+        desktop.add(visita);
+        visita.setVisible(true);
+    }//GEN-LAST:event_entradaActionPerformed
+
+    private void animalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animalesActionPerformed
+        // TODO add your handling code here:
+        AnimalGUI animal = new AnimalGUI();
+        desktop.add(animal);
+        animal.setVisible(true);
+    }//GEN-LAST:event_animalesActionPerformed
+
+    private void ambientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambientesActionPerformed
+        // TODO add your handling code here:
+        AmbienteGUI amb = new AmbienteGUI();
+        desktop.add(amb);
+        amb.setVisible(true);
+    }//GEN-LAST:event_ambientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,10 +150,11 @@ public class Zoologico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu ambientes;
+    private javax.swing.JMenu animales;
+    public static javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenu entrada;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

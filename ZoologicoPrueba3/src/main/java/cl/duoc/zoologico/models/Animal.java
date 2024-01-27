@@ -6,38 +6,39 @@ package cl.duoc.zoologico.models;
 
 
 import java.time.LocalDate;
-import java.time.Month;
-
 /**
  *
  * @author Cetecom
  */
 public class Animal {
-    private int numRegistro;
+    private int chip;
     private String nombre;
     private LocalDate edad;
     private String tipoClima;
+    private String descripcion;
 
     public Animal() {
-        this.numRegistro = numRegistro+1;
+        this.chip = chip+1;
         this.nombre = "";
         this.edad = LocalDate.now();
         this.tipoClima = "";
+        this.descripcion = "";
     }
     
-    public Animal(int numRegistro, String nombre, LocalDate edad, String tipoClima) {
-        this.numRegistro = numRegistro;
+    public Animal(int chip, String nombre, LocalDate edad, String tipoClima, String descripcion) {
+        this.chip = chip;
         this.nombre = nombre;
         this.edad = edad;
         this.tipoClima = tipoClima;
+        this.descripcion = descripcion;
     }
 
-    public int getNumRegistro() {
-        return numRegistro;
+    public int getChip() {
+        return chip;
     }
 
-    public void setNumRegistro(int numRegistro) {
-        this.numRegistro = numRegistro;
+    public void setChip(int chip) {
+        this.chip = chip;
     }
 
     public String getNombre() {
@@ -65,11 +66,19 @@ public class Animal {
         this.tipoClima = tipoClima;
     }
     
+    public String getDescripcion(){
+        return this.descripcion;
+    }
+    
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    }
+    
     @Override
     public String toString(){
-        String mensaje = "Numero de resgistro:"+numRegistro+"\nNombre:"+nombre
+        String mensaje = "Numero de resgistro:"+chip+"\nNombre:"+nombre
                 +"\nEdad:"+edad+"\nTipo de clima donde vive:"+tipoClima
-                +"\n------------------------------------";
+                +"\nDescripcion breve:"+descripcion+"\n------------------------------------";
         
         return mensaje;
     }
