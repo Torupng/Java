@@ -4,8 +4,6 @@
  */
 package cl.duoc.zoologico.models;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author mangl
@@ -18,8 +16,8 @@ public class AnimalElefante extends Animal{
         this.tonelaje = 0;
     }
     
-    public AnimalElefante(int tonelaje, int chip, String nombre, LocalDate edad, String tipoClima, String descripcion) {
-        super(chip, nombre, edad, tipoClima, descripcion);
+    public AnimalElefante(int tonelaje, int chip, String nombre, int edad, String tipoAnimal,String tipoClima, String descripcion) {
+        super(chip, nombre, edad, tipoAnimal,tipoClima, descripcion);
         this.tonelaje = tonelaje;
     }
 

@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cl.duoc.zoologico.models;
-
-import java.time.LocalDate;
-
 /**
  *
  * @author mangl
@@ -18,8 +15,8 @@ public class AnimalOrangutan extends Animal{
         this.meses = 0;
     }
     
-    public AnimalOrangutan(int meses, int chip, String nombre, LocalDate edad, String tipoClima, String descripcion) {
-        super(chip, nombre, edad, tipoClima, descripcion);
+    public AnimalOrangutan(int meses, int chip, String nombre, int edad, String tipoAnimal,String tipoClima, String descripcion) {
+        super(chip, nombre, edad, tipoAnimal,tipoClima, descripcion);
         this.meses = meses;
     }
 

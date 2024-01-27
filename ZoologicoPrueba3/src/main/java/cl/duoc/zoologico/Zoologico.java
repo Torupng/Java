@@ -6,6 +6,7 @@ package cl.duoc.zoologico;
 
 import cl.duoc.zoologico.gui.AmbienteGUI;
 import cl.duoc.zoologico.gui.AnimalGUI;
+import cl.duoc.zoologico.gui.EntradaGUI;
 import cl.duoc.zoologico.gui.VisitanteGUI;
 
 /**
@@ -31,11 +32,17 @@ public class Zoologico extends javax.swing.JFrame {
     private void initComponents() {
 
         desktop = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        entrada = new javax.swing.JMenu();
-        animales = new javax.swing.JMenu();
-        ambientes = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        entrada = new javax.swing.JMenuItem();
+        visita = new javax.swing.JMenuItem();
+        ambientes = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        nuevoAnimal = new javax.swing.JMenuItem();
+        leon = new javax.swing.JMenuItem();
+        tigre = new javax.swing.JMenuItem();
+        elefante = new javax.swing.JMenuItem();
+        orangutan = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,34 +57,59 @@ public class Zoologico extends javax.swing.JFrame {
             .addGap(0, 338, Short.MAX_VALUE)
         );
 
-        entrada.setText("Entrada");
+        jMenu2.setText("Edit");
+
+        entrada.setText("Pedir Entrada");
         entrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entradaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(entrada);
+        jMenu2.add(entrada);
 
-        animales.setText("Registrar animales");
-        animales.addActionListener(new java.awt.event.ActionListener() {
+        visita.setText(" Registro de visitantes");
+        visita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                animalesActionPerformed(evt);
+                visitaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(animales);
+        jMenu2.add(visita);
 
-        ambientes.setText("Registro de Ambiente");
+        ambientes.setText("Registro de ambientes");
         ambientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ambientesActionPerformed(evt);
             }
         });
-        jMenuBar1.add(ambientes);
+        jMenu2.add(ambientes);
 
-        jMenu4.setText("Reportes");
-        jMenuBar1.add(jMenu4);
+        jMenu1.setText("Registrar animales");
 
-        setJMenuBar(jMenuBar1);
+        nuevoAnimal.setText("Nuevo animal");
+        nuevoAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoAnimalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(nuevoAnimal);
+
+        leon.setText("Leon");
+        jMenu1.add(leon);
+
+        tigre.setText("Tigre");
+        jMenu1.add(tigre);
+
+        elefante.setText("Elefante");
+        jMenu1.add(elefante);
+
+        orangutan.setText("Orangutan");
+        jMenu1.add(orangutan);
+
+        jMenu2.add(jMenu1);
+
+        jMenuBar2.add(jMenu2);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,24 +127,31 @@ public class Zoologico extends javax.swing.JFrame {
 
     private void entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaActionPerformed
         // TODO add your handling code here:
+        EntradaGUI entrada = new EntradaGUI();
+        desktop.add(entrada);
+        entrada.setVisible(true);
+    }//GEN-LAST:event_entradaActionPerformed
+
+    private void visitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitaActionPerformed
+        // TODO add your handling code here:
         VisitanteGUI visita = new VisitanteGUI();
         desktop.add(visita);
         visita.setVisible(true);
-    }//GEN-LAST:event_entradaActionPerformed
-
-    private void animalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animalesActionPerformed
-        // TODO add your handling code here:
-        AnimalGUI animal = new AnimalGUI();
-        desktop.add(animal);
-        animal.setVisible(true);
-    }//GEN-LAST:event_animalesActionPerformed
+    }//GEN-LAST:event_visitaActionPerformed
 
     private void ambientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambientesActionPerformed
         // TODO add your handling code here:
-        AmbienteGUI amb = new AmbienteGUI();
-        desktop.add(amb);
-        amb.setVisible(true);
+        AmbienteGUI ambiente = new AmbienteGUI();
+        desktop.add(ambiente);
+        ambiente.setVisible(true);
     }//GEN-LAST:event_ambientesActionPerformed
+
+    private void nuevoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoAnimalActionPerformed
+        // TODO add your handling code here:
+        AnimalGUI nuevo = new AnimalGUI();
+        desktop.add(nuevo);
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_nuevoAnimalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +189,17 @@ public class Zoologico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu ambientes;
-    private javax.swing.JMenu animales;
+    private javax.swing.JMenuItem ambientes;
     public static javax.swing.JDesktopPane desktop;
-    private javax.swing.JMenu entrada;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem elefante;
+    private javax.swing.JMenuItem entrada;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem leon;
+    private javax.swing.JMenuItem nuevoAnimal;
+    private javax.swing.JMenuItem orangutan;
+    private javax.swing.JMenuItem tigre;
+    private javax.swing.JMenuItem visita;
     // End of variables declaration//GEN-END:variables
 }

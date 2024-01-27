@@ -74,8 +74,8 @@ public class Ambiente {
         return mantencion;
     }
 
-    public void setMantencion(LocalDate mantencion) {
-        this.mantencion = mantencion;
+    public void setMantencion(int anio, int mes, int dia) {
+        this.mantencion = LocalDate.of(anio, mes, dia);
     }
 
     public int getEcosistema() {

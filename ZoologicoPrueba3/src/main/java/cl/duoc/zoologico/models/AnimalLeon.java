@@ -18,8 +18,8 @@ public class AnimalLeon extends Animal{
         this.dentista = LocalDate.now();
     }
 
-    public AnimalLeon(LocalDate dentista, int chip, String nombre, LocalDate edad, String tipoClima, String descripcion) {
-        super(chip, nombre, edad, tipoClima, descripcion);
+    public AnimalLeon(LocalDate dentista, int chip, String nombre, int edad, String tipoAnimal,String tipoClima, String descripcion) {
+        super(chip, nombre, edad, tipoAnimal,tipoClima, descripcion);
         this.dentista = dentista;
     }
 

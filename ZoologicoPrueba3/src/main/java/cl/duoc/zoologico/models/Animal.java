@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cl.duoc.zoologico.models;
-
-
-import java.time.LocalDate;
 /**
  *
  * @author Cetecom
@@ -13,24 +10,27 @@ import java.time.LocalDate;
 public class Animal {
     private int chip;
     private String nombre;
-    private LocalDate edad;
+    private int edad;
+    private String tipoAnimal;
     private String tipoClima;
     private String descripcion;
 
     public Animal() {
         this.chip = chip+1;
         this.nombre = "";
-        this.edad = LocalDate.now();
+        this.edad = 0;
         this.tipoClima = "";
         this.descripcion = "";
+        this.tipoAnimal = "";
     }
     
-    public Animal(int chip, String nombre, LocalDate edad, String tipoClima, String descripcion) {
+    public Animal(int chip, String nombre, int edad, String tipoAnimal,String tipoClima, String descripcion) {
         this.chip = chip;
         this.nombre = nombre;
         this.edad = edad;
         this.tipoClima = tipoClima;
         this.descripcion = descripcion;
+        this.tipoAnimal = tipoAnimal;
     }
 
     public int getChip() {
@@ -50,12 +50,20 @@ public class Animal {
     }
 
 
-    public LocalDate getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int anio, int mes, int dia) {
-        this.edad = LocalDate.of(anio, mes, dia);
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
+    public String getTipoAnimal(){
+        return this.tipoAnimal;
+    }
+    
+    public void setTipoAnimal(String tipoAnimal){
+        this.tipoAnimal = tipoAnimal;
     }
 
     public String getTipoClima() {
@@ -77,7 +85,7 @@ public class Animal {
     @Override
     public String toString(){
         String mensaje = "Numero de resgistro:"+chip+"\nNombre:"+nombre
-                +"\nEdad:"+edad+"\nTipo de clima donde vive:"+tipoClima
+                +"\nEdad:"+edad+"\nTipo animal:"+tipoAnimal+"\nTipo de clima donde vive:"+tipoClima
                 +"\nDescripcion breve:"+descripcion+"\n------------------------------------";
         
         return mensaje;

@@ -12,10 +12,10 @@ import java.time.LocalDate;
  * @author Cetecom
  */
 public class Entrada {
-    private int codigo = 1;//ID
+    private int codigo = 1000;//ID
     private Visitante visita;
     private LocalDate fecha;
-    private int tipo;
+    private long tipo;
     private double valor;
     private boolean colacion;
 
@@ -28,7 +28,7 @@ public class Entrada {
         this.colacion = false;
     }
     
-    public Entrada(int codigo, Visitante visita, LocalDate fecha,int tipo, double valor, boolean colacion) {
+    public Entrada(int codigo, Visitante visita, LocalDate fecha,int tipo, long valor, boolean colacion) {
         this.codigo = codigo;
         this.visita = visita;
         this.fecha = fecha;
@@ -39,14 +39,6 @@ public class Entrada {
 
     public int getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        if(Validacion.numEntrada(codigo)){
-            this.codigo = codigo;
-        }else{
-            System.out.println("Error con el correlativo");
-        }
     }
 
     public Visitante getVisita() {
@@ -62,15 +54,10 @@ public class Entrada {
     }
     
     public void setFecha(int anio, int mes, int dia){
-        LocalDate fecha = LocalDate.of(anio, mes, dia);
-        if(Validacion.ValFechaEntrada(fecha)){
-            this.fecha = fecha;
-        }else{
-            System.out.println("fecha erronea");
-        }
+        this.fecha = LocalDate.of(anio, mes, dia);
     }
     
-    public int getTipo(){
+    public long getTipo(){
         return this.tipo;
     }
     
@@ -88,12 +75,8 @@ public class Entrada {
         return valor;
     }
 
-    public void setValor(double valor) {
-        if(Validacion.valPrecio(valor)){
-            this.valor = valor;
-        }else{
-            System.out.println("El valor es menor a 10.000");
-        }
+    public void setValor(long valor) {
+        this.valor = valor;
     }
 
     public boolean isColacion() {
