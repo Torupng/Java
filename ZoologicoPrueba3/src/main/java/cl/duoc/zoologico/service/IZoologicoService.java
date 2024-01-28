@@ -14,9 +14,27 @@ import cl.duoc.zoologico.models.Visitante;
  * @author mangl
  */
 public interface IZoologicoService {
-    
+    //C
     public void guardarAnimales(Animal animal);
     public void guardarAmbiente(Ambiente ambiente);
     public void guardarVisitantes(Visitante visita);
     public void guardarEntradas(Entrada entrada);
+    
+    //R
+    public void MostrarListaAnimal();
+    public void MostrarListaAmbiente();
+    public void MostrarListaVsisita();
+    public void MostrarListaEntrada();
+    
+    //U
+    public void EditarAnimal(Animal a, int i);
+    public void EditarAmbiente(Ambiente a, int i);
+    public void EditarVisita(Visitante v, int i);
+    public void EditarEntrada(Entrada e, int i);
+
+    //D
+    public void EliminarAnimales(int i);
+    public void EliminarAmbiente(int i);
+    public void EliminarVisitante(int i);
+    public void EliminarEntrada(int i);
 }
