@@ -4,6 +4,11 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.models.Visitante;
+import cl.duoc.zoologico.service.IZoologicoService;
+import cl.duoc.zoologico.service.ZoologicoService;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mangl
@@ -13,8 +18,13 @@ public class RVisitanteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form RVisitanteGUI
      */
+    IZoologicoService servicio = VisitanteGUI.servicio;
     public RVisitanteGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
+        lista();
+        
     }
 
     /**
@@ -26,27 +36,86 @@ public class RVisitanteGUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVisitantes = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Reporte de visitantes");
 
+        tblVisitantes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblVisitantes);
+
+        btnEliminar.setText("Eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnEliminar)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void lista(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("Rut del visitante");
+        tabla.addColumn("Numero de telefóno");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Dirección");
+        tabla.addColumn("Edad");
+        tabla.addColumn("Estado civil");
+        tabla.addColumn("Correo electronico");
+        tblVisitantes.setModel(tabla);
+    
+        for(Visitante visita : servicio.listaVisita()){
+        Object[] fila = {
+        visita.getRut(),
+        visita.getNumeroCliente(),
+        visita.getNombreCompleto(),
+        visita.getDireccion(),
+        visita.getEdad(),
+        visita.getEstadoCivil(),
+        visita.getCorreoElectronico()
+        };
+        tabla.addRow(fila);
+    }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblVisitantes;
     // End of variables declaration//GEN-END:variables
 }

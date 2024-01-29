@@ -17,8 +17,11 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AmbienteGUI
      */
+    public static IZoologicoService servicio;
     public AmbienteGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -163,7 +166,6 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService serv = new ZoologicoService();
         Ambiente amb = new Ambiente();
         
         int dd = Integer.parseInt(txtDia.getText());
@@ -181,7 +183,7 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
         amb.setSector(sector);
         amb.setEcosistema(eco);
         
-        serv.guardarAmbiente(amb);
+        servicio.guardarAmbiente(amb);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed

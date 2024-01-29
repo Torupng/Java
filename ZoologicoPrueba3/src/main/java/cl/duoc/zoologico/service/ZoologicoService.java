@@ -48,6 +48,31 @@ public class ZoologicoService implements IZoologicoService{
     public void guardarEntradas(Entrada entrada) {
         this.listaEntrada.add(entrada);
     }
+    
+    @Override
+    public List<Animal> listaAn() {
+        System.out.println(this.listaAn);
+        return this.listaAn;
+    }
+
+    @Override
+    public List<Ambiente> listaAmb() {
+        System.out.println(this.listaAmb);
+        return this.listaAmb;
+    }
+
+    @Override
+    public List<Visitante> listaVisita() {
+        System.out.println(this.listaVisita);
+        return this.listaVisita;
+    }
+
+    @Override
+    public List<Entrada> listaEntrada() {
+        System.out.println(this.listaEntrada);
+        return this.listaEntrada;
+    }
+    
 
     @Override
     public void EditarAnimal(Animal a, int i) {
@@ -87,27 +112,6 @@ public class ZoologicoService implements IZoologicoService{
     @Override
     public void EliminarEntrada(int i) {
         this.listaEntrada.remove(i);
-    }
-
-    @Override
-    public Animal MostrarListaAnimal() {
-        ArrayList<Object[]> elemento = new ArrayList<Object[]>();
-        Object[] dato = new Object[]();
-    }
-
-    @Override
-    public Ambiente MostrarListaAmbiente(int posicion) {
-        return this.listaAmb.get(posicion);
-    }
-
-    @Override
-    public Visitante MostrarListaVisisita(int posicion) {
-        return this.listaVisita.get(posicion);
-    }
-
-    @Override
-    public Entrada MostrarListaEntrada(int posicion) {
-        return this.listaEntrada.get(posicion);
     }
     
 }

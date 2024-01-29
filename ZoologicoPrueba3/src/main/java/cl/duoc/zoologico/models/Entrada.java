@@ -4,7 +4,6 @@
  */
 package cl.duoc.zoologico.models;
 
-import cl.duoc.zoologico.utils.Validacion;
 import java.time.LocalDate;
 
 /**
@@ -16,24 +15,21 @@ public class Entrada {
     private Visitante visita;
     private LocalDate fecha;
     private long tipo;
-    private double valor;
-    private boolean colacion;
+    private int colacion;
 
     public Entrada() {
         this.codigo = codigo+1;
         this.visita = new Visitante();
         this.fecha = LocalDate.now();
         this.tipo = 1;
-        this.valor = 0;
-        this.colacion = false;
+        this.colacion = 1;
     }
     
-    public Entrada(int codigo, Visitante visita, LocalDate fecha,int tipo, long valor, boolean colacion) {
+    public Entrada(int codigo, Visitante visita, LocalDate fecha,int tipo, int colacion) {
         this.codigo = codigo;
         this.visita = visita;
         this.fecha = fecha;
         this.tipo = tipo;
-        this.valor = valor;
         this.colacion = colacion;
     }
 
@@ -71,27 +67,18 @@ public class Entrada {
         }
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(long valor) {
-        this.valor = valor;
-    }
-
-    public boolean isColacion() {
+    public int getColacion() {
         return colacion;
     }
 
-    public void setColacion(boolean colacion) {
+    public void setColacion(int colacion) {
         this.colacion = colacion;
     }
     
     @Override
     public String toString(){
         String mensaje = "\n------------------------------------"+"\nCorrelativo de entrada:"+codigo+"\nVisitante:"+visita
-                +"\nFecha:"+fecha+"\nTipo de entrada:"+tipo+"\nIncluye colacion:"+colacion
-                +"\nValor:"+valor+"\n------------------------------------";
+                +"\nFecha:"+fecha+"\nTipo de entrada:"+tipo+"\nIncluye colacion:"+colacion+"\n------------------------------------";
         
         return mensaje;
     }

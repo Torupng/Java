@@ -17,8 +17,11 @@ public class AnimalGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AnimalGUI
      */
+    public static IZoologicoService servicio;
     public AnimalGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -169,7 +172,6 @@ public class AnimalGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService serv = new ZoologicoService();
         Animal anim = new Animal();
         
         int chip = Integer.parseInt(txtChip.getText());
@@ -185,7 +187,7 @@ public class AnimalGUI extends javax.swing.JInternalFrame {
         anim.setTipoClima(clima);
         anim.setEdad(edad);
         
-        serv.guardarAnimales(anim);
+        servicio.guardarAnimales(anim);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed

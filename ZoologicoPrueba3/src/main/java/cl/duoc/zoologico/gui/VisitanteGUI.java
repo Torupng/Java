@@ -4,7 +4,9 @@
  */
 package cl.duoc.zoologico.gui;
 
-import cl.duoc.zoologico.Zoologico;
+import cl.duoc.zoologico.models.Visitante;
+import cl.duoc.zoologico.service.IZoologicoService;
+import cl.duoc.zoologico.service.ZoologicoService;
 
 /**
  *
@@ -15,8 +17,12 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form VisitanteGUI
      */
+    public static IZoologicoService servicio;
     public VisitanteGUI() {
         initComponents();
+        if(servicio == null){
+            servicio =  new ZoologicoService();
+        }
     }
 
     /**
@@ -75,6 +81,11 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
         });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,6 +181,30 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
         txtCorreo.setText("");
         cbxEstadoCivil.getItemAt(WIDTH);
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        IZoologicoService service = new ZoologicoService();
+        Visitante visita = new Visitante();
+        
+        String rut = txtRut.getText();
+        String nombre = txtNombre.getText();
+        String direccion = txtDireccion.getText();
+        String correo = txtCorreo.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        long telefono = Integer.parseInt(txtTelefono.getText());
+        int estadoCivil = cbxEstadoCivil.getSelectedIndex();
+        
+        visita.setRut(rut);
+        visita.setNombreCompleto(nombre);
+        visita.setEdad(edad);
+        visita.setDireccion(direccion);
+        visita.setNumeroCliente(telefono);
+        visita.setEstadoCivil(estadoCivil);
+        visita.setCorreoElectronico(correo);
+        
+        service.guardarVisitantes(visita);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

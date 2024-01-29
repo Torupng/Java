@@ -8,6 +8,7 @@ import cl.duoc.zoologico.models.Ambiente;
 import cl.duoc.zoologico.models.Animal;
 import cl.duoc.zoologico.models.Entrada;
 import cl.duoc.zoologico.models.Visitante;
+import java.util.List;
 
 /**
  *
@@ -21,10 +22,10 @@ public interface IZoologicoService {
     public void guardarEntradas(Entrada entrada);
     
     //R
-    public Animal MostrarListaAnimal();
-    public Ambiente MostrarListaAmbiente(int posicion);
-    public Visitante MostrarListaVisisita(int posicion);
-    public Entrada MostrarListaEntrada(int posicion);
+    public List<Animal> listaAn();
+    public List<Ambiente> listaAmb();
+    public List<Visitante> listaVisita();
+    public List<Entrada> listaEntrada();
     
     //U
     public void EditarAnimal(Animal a, int i);

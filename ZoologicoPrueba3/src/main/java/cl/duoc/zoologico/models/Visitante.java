@@ -12,10 +12,11 @@ import java.time.LocalDate;
 public class Visitante {
     private String rut;
     private long numeroCliente;
-    private String nombreCompleto;
+    public String nombreCompleto;
     private String direccion;
-    private LocalDate fechaNacimiento;
+    private int edad;
     private final int estadoCivil;
+    private String correoElectronico;
     
     
     public Visitante() {
@@ -23,17 +24,19 @@ public class Visitante {
         this.numeroCliente = 0;
         this.nombreCompleto = "";
         this.direccion = "";
-        this.fechaNacimiento = LocalDate.now();
+        this.edad = 0;
         this.estadoCivil = 1;
+        this.correoElectronico = "";
     }
 
-    public Visitante(String rut, long numeroCliente, String nombreCompleto, String direccion, LocalDate fechaNacimiento,int estadoCivil) {
+    public Visitante(String rut, long numeroCliente, String nombreCompleto, String direccion, int edad,int estadoCivil, String correoElectronico) {
         this.rut = rut;
         this.numeroCliente = numeroCliente;
         this.nombreCompleto = nombreCompleto;
         this.direccion = direccion;
-        this.fechaNacimiento = fechaNacimiento;
+        this.edad = edad;
         this.estadoCivil = estadoCivil;
+        this.correoElectronico = correoElectronico;
     }
 
     public String getRut() {
@@ -68,12 +71,12 @@ public class Visitante {
         this.direccion = direccion;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setFechaNacimiento(int jear, int mm, int dd) {
-        this.fechaNacimiento = LocalDate.of(jear, mm, dd);
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
     
     public int getEstadoCivil(){
@@ -88,11 +91,19 @@ public class Visitante {
         }
     }
     
+    public String getCorreoElectronico(){
+        return this.correoElectronico;
+    }
+    
+    public void setCorreoElectronico(String correoElectronico){
+        this.correoElectronico = correoElectronico;
+    }
+    
     @Override
     public String toString(){
         String mensaje = "Rut visitante:"+rut+"\nNumero de telefono:"+numeroCliente
                 +"\nNombre completo:"+nombreCompleto+"\nDireccion:"+direccion
-                +"\nEdad:"+fechaNacimiento+"\nEstado Civil:"+estadoCivil;
+                +"\nEdad:"+edad+"\nEstado Civil:"+estadoCivil+"\nCorreo electronico:"+correoElectronico;
         
         return mensaje;
     }

@@ -4,10 +4,9 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.models.Animal;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,26 +18,12 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form RAnimalesGUI
      */
+    IZoologicoService servicio = AnimalGUI.servicio;
     public RAnimalesGUI() {
         initComponents();
-    }
-    IZoologicoService serv = new ZoologicoService();
-    DefaultTableModel model = new DefaultTableModel();
-    
-    private void Tabla(){
-        List<Object> obj = new ArrayList();
-        obj.add("N° Chip");
-        obj.add("Nombre");
-        obj.add("Edad");
-        obj.add("Tipo animal");
-        obj.add("Tipo clima");
-        obj.add("Descripción");
-        
-        for(Object columna : obj){
-            model.addColumn(columna);
-        }
-        this.tblAnimales.setModel(model);
-        
+        if(servicio == null)
+            servicio =  new ZoologicoService();
+        lista();
     }
     
     /**
@@ -52,7 +37,6 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimales = new javax.swing.JTable();
-        btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
         setClosable(true);
@@ -61,46 +45,79 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Reporte de animales");
 
+        tblAnimales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
         jScrollPane1.setViewportView(tblAnimales);
 
-        btnEditar.setText("Editar");
-
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(17, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(btnEliminar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar))
-                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(btnEliminar)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
+    
+    public void lista(){
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn("N°Chip");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Edad");
+        tabla.addColumn("Tipo de animal");
+        tabla.addColumn("Tipo de clima donde vive");
+        tabla.addColumn("Descripción");
+        tblAnimales.setModel(tabla);
+    
+        for(Animal animal : servicio.listaAn()){
+        Object[] fila = {
+        animal.getChip(),
+        animal.getNombre(),
+        animal.getEdad(),
+        animal.getTipoAnimal(),
+        animal.getTipoClima(),
+        animal.getDescripcion()
+        };
+        tabla.addRow(fila);
+    }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAnimales;
