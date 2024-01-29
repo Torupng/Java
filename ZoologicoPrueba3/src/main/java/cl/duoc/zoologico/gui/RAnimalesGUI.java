@@ -4,6 +4,12 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.service.IZoologicoService;
+import cl.duoc.zoologico.service.ZoologicoService;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mangl
@@ -16,7 +22,25 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
     public RAnimalesGUI() {
         initComponents();
     }
-
+    IZoologicoService serv = new ZoologicoService();
+    DefaultTableModel model = new DefaultTableModel();
+    
+    private void Tabla(){
+        List<Object> obj = new ArrayList();
+        obj.add("N° Chip");
+        obj.add("Nombre");
+        obj.add("Edad");
+        obj.add("Tipo animal");
+        obj.add("Tipo clima");
+        obj.add("Descripción");
+        
+        for(Object columna : obj){
+            model.addColumn(columna);
+        }
+        this.tblAnimales.setModel(model);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +51,7 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAnimales = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
@@ -37,18 +61,7 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Reporte de animales");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAnimales);
 
         btnEditar.setText("Editar");
 
@@ -59,14 +72,16 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addComponent(btnEditar)
-                        .addGap(369, 369, 369)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(17, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,6 +103,6 @@ public class RAnimalesGUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblAnimales;
     // End of variables declaration//GEN-END:variables
 }

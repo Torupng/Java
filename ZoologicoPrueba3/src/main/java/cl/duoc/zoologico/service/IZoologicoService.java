@@ -21,10 +21,10 @@ public interface IZoologicoService {
     public void guardarEntradas(Entrada entrada);
     
     //R
-    public void MostrarListaAnimal();
-    public void MostrarListaAmbiente();
-    public void MostrarListaVsisita();
-    public void MostrarListaEntrada();
+    public Animal MostrarListaAnimal();
+    public Ambiente MostrarListaAmbiente(int posicion);
+    public Visitante MostrarListaVisisita(int posicion);
+    public Entrada MostrarListaEntrada(int posicion);
     
     //U
     public void EditarAnimal(Animal a, int i);

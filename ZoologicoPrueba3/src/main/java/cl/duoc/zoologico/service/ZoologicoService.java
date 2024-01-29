@@ -90,23 +90,24 @@ public class ZoologicoService implements IZoologicoService{
     }
 
     @Override
-    public void MostrarListaAnimal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Animal MostrarListaAnimal() {
+        ArrayList<Object[]> elemento = new ArrayList<Object[]>();
+        Object[] dato = new Object[]();
     }
 
     @Override
-    public void MostrarListaAmbiente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Ambiente MostrarListaAmbiente(int posicion) {
+        return this.listaAmb.get(posicion);
     }
 
     @Override
-    public void MostrarListaVsisita() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Visitante MostrarListaVisisita(int posicion) {
+        return this.listaVisita.get(posicion);
     }
 
     @Override
-    public void MostrarListaEntrada() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Entrada MostrarListaEntrada(int posicion) {
+        return this.listaEntrada.get(posicion);
     }
     
 }
