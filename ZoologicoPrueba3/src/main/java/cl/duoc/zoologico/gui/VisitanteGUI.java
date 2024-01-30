@@ -7,6 +7,8 @@ package cl.duoc.zoologico.gui;
 import cl.duoc.zoologico.models.Visitante;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
+import cl.duoc.zoologico.utils.Validacion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,16 +186,31 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        try{
         Visitante visita = new Visitante();
-        
-        String rut = txtRut.getText();
+
+        String rut = txtRut.getText().trim();
+        if (!Validacion.isValidChileanRut(rut)) {
+        JOptionPane.showMessageDialog(this, "El Rut ingresado no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         String nombre = txtNombre.getText();
         String direccion = txtDireccion.getText();
         String correo = txtCorreo.getText();
-        int edad = Integer.parseInt(txtEdad.getText());
+        int edad;
+        try {
+        edad = Integer.parseInt(txtEdad.getText().trim());
+        if (!Validacion.isValidAge(edad)) {
+            JOptionPane.showMessageDialog(this, "La edad debe estar entre 1 y 120", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Ingrese una edad válida", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         long telefono = Integer.parseInt(txtTelefono.getText());
         int estadoCivil = cbxEstadoCivil.getSelectedIndex();
-        
+
         visita.setRut(rut);
         visita.setNombreCompleto(nombre);
         visita.setEdad(edad);
@@ -201,12 +218,14 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
         visita.setNumeroCliente(telefono);
         visita.setEstadoCivil(estadoCivil);
         visita.setCorreoElectronico(correo);
-        
-        try{
-            servicio.guardarVisitantes(visita);
-            System.out.println("guardado");
+
+
+        servicio.guardarVisitantes(visita);
+        JOptionPane.showMessageDialog(this, "Visitante creado correctamente.");
+        System.out.println("creado con exito.");
         }catch(Exception e){
-            System.out.println("AAAAAAAAAA");
+        System.out.println("error mi gente, algo pasa.");
+        JOptionPane.showMessageDialog(this, "ERROR, faltan campos por llenar", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

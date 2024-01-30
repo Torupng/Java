@@ -8,6 +8,7 @@ import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Ambiente;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,12 +185,12 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
         amb.setSector(sector);
         amb.setEcosistema(eco);
         
-        
         try{
             servicio.guardarAmbiente(amb);
             System.out.println("guardado");
         }catch(Exception e){
             System.out.println("AAAAAAAAAA");
+            JOptionPane.showMessageDialog(this, "ERROR, no ah introducido fecha o faltan mas datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         

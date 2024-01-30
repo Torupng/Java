@@ -6,9 +6,9 @@ package cl.duoc.zoologico.gui;
 
 import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Entrada;
-import cl.duoc.zoologico.models.Visitante;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -166,23 +166,34 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        
+        try{
         int dia = Integer.parseInt(txtDia.getText());
         int mes = Integer.parseInt(txtMes.getText());
         int anio = Integer.parseInt(txtAnio.getText());
         int tipo = cbxTipoEntrada.getSelectedIndex();
         int colacion = cbxColacion.getSelectedIndex();
+
         
-        entrada.setColacion(colacion);
         entrada.setFecha(anio, mes, dia);
-        entrada.setTipo(tipo);
+
+        if(colacion == 1){
+            entrada.setColacion("Si");
+        }else if(colacion == 2){
+            entrada.setColacion("No");
+        }
         
-        
-        try{
-            servicio.guardarEntradas(entrada);
-            System.out.println("guardado");
+        if(tipo == 1){
+            entrada.setTipo("Premium - valor:$25.000");
+        }else if(tipo == 2){
+            entrada.setTipo("Normal - valor:$10.000");
+        }
+
+        servicio.guardarEntradas(entrada);
+        JOptionPane.showMessageDialog(this, "Entrada registrada exitosamente.");
+        System.out.println("registrado correctamente");
         }catch(Exception e){
-            System.out.println("AAAAAAAAAA");
+        System.out.println("Error......, corraaaan!!");
+        JOptionPane.showMessageDialog(this, "Error al registrar una entrada.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed

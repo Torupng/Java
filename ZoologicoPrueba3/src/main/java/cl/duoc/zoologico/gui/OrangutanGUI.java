@@ -5,9 +5,13 @@
 package cl.duoc.zoologico.gui;
 
 import cl.duoc.zoologico.Zoologico;
+import cl.duoc.zoologico.models.Animal;
 import cl.duoc.zoologico.models.AnimalOrangutan;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
+import cl.duoc.zoologico.utils.Validacion;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -192,13 +196,19 @@ public class OrangutanGUI extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         AnimalOrangutan anim = new AnimalOrangutan();
+        List<Animal> listaAnimales = servicio.listaAn();
 
         int chip = Integer.parseInt(txtChip.getText());
         String nombre = txtNombre.getText();
         String clima = txtClima.getText();
         String descrip = txtDescripcion.getText();
         int edad = Integer.parseInt(txtEdad.getText());
-        int mes = Integer.parseInt(txtMeses.getText());
+        int meses = Integer.parseInt(txtMeses.getText());
+
+        if (!Validacion.validarChipUnico(chip, listaAnimales)) {
+            JOptionPane.showMessageDialog(this, "El número de chip ingresado ya está en uso.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
 
         anim.setChip(chip);
         anim.setDescripcion(descrip);
@@ -206,13 +216,15 @@ public class OrangutanGUI extends javax.swing.JInternalFrame {
         anim.setTipoAnimal("Orangutan");
         anim.setTipoClima(clima);
         anim.setEdad(edad);
-        anim.setMeses(mes);
+        anim.setMeses(meses);
 
-        try{
+        try {
             servicio.guardarAnimales(anim);
-            System.out.println("guardado");
-        }catch(Exception e){
-            System.out.println("AAAAAAAAAA");
+            JOptionPane.showMessageDialog(this, "Animal registrado exitosamente.");
+            System.out.println("Se registró correctamente.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar el animal.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error al registrar el animal.");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

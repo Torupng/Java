@@ -14,18 +14,18 @@ public class Entrada {
     private int codigo = 1000;//ID
     private Visitante visita;
     private LocalDate fecha;
-    private long tipo;
-    private int colacion;
+    private String tipo;
+    private String colacion;
 
     public Entrada() {
         this.codigo = codigo+1;
         this.visita = new Visitante();
         this.fecha = LocalDate.now();
-        this.tipo = 1;
-        this.colacion = 1;
+        this.tipo = "";
+        this.colacion = "";
     }
     
-    public Entrada(int codigo, Visitante visita, LocalDate fecha,int tipo, int colacion) {
+    public Entrada(int codigo, Visitante visita, LocalDate fecha, String tipo, String colacion) {
         this.codigo = codigo;
         this.visita = visita;
         this.fecha = fecha;
@@ -53,25 +53,19 @@ public class Entrada {
         this.fecha = LocalDate.of(anio, mes, dia);
     }
     
-    public long getTipo(){
+    public String getTipo(){
         return this.tipo;
     }
     
-    public void setTipo(int tipo){
-        if(tipo == 1){
-            String mensaje = "Premuim";
-        }else if(tipo == 2){
-            String mensaje = "Normal";
-        }else{
-            System.out.println("No se ah elegido el tipo de entrada");
-        }
+    public void setTipo(String tipo){
+        this.tipo = tipo;
     }
 
-    public int getColacion() {
+    public String getColacion() {
         return colacion;
     }
 
-    public void setColacion(int colacion) {
+    public void setColacion(String colacion) {
         this.colacion = colacion;
     }
     
