@@ -4,6 +4,7 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Ambiente;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
@@ -17,7 +18,7 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AmbienteGUI
      */
-    public static IZoologicoService servicio;
+    IZoologicoService servicio = Zoologico.servicio;
     public AmbienteGUI() {
         initComponents();
         if(servicio == null)
@@ -176,14 +177,22 @@ public class AmbienteGUI extends javax.swing.JInternalFrame {
         String descrip = txtDescripcion.getText();
         int eco = cbxEcosistema.getSelectedIndex();
         
-        
+        amb.getChip();
         amb.setMantencion(yyyy, mm, dd);
         amb.setDescripcion(descrip);
         amb.setNombreJaula(jaula);
         amb.setSector(sector);
         amb.setEcosistema(eco);
         
-        servicio.guardarAmbiente(amb);
+        
+        try{
+            servicio.guardarAmbiente(amb);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed

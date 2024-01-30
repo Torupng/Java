@@ -6,8 +6,18 @@ package cl.duoc.zoologico;
 
 import cl.duoc.zoologico.gui.AmbienteGUI;
 import cl.duoc.zoologico.gui.AnimalGUI;
+import cl.duoc.zoologico.gui.ElefanteGUI;
 import cl.duoc.zoologico.gui.EntradaGUI;
+import cl.duoc.zoologico.gui.LeonGUI;
+import cl.duoc.zoologico.gui.OrangutanGUI;
+import cl.duoc.zoologico.gui.RAmbienteGUI;
+import cl.duoc.zoologico.gui.RAnimalesGUI;
+import cl.duoc.zoologico.gui.REntradaGUI;
+import cl.duoc.zoologico.gui.RVisitanteGUI;
+import cl.duoc.zoologico.gui.TigreGUI;
 import cl.duoc.zoologico.gui.VisitanteGUI;
+import cl.duoc.zoologico.service.IZoologicoService;
+import cl.duoc.zoologico.service.ZoologicoService;
 
 /**
  *
@@ -18,8 +28,11 @@ public class Zoologico extends javax.swing.JFrame {
     /**
      * Creates new form Zoologico
      */
+    public static IZoologicoService servicio;
     public Zoologico() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -43,6 +56,11 @@ public class Zoologico extends javax.swing.JFrame {
         tigre = new javax.swing.JMenuItem();
         elefante = new javax.swing.JMenuItem();
         orangutan = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        reporteEntrada = new javax.swing.JMenuItem();
+        reporteVisitante = new javax.swing.JMenuItem();
+        reportAmb = new javax.swing.JMenuItem();
+        repAnimales = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +75,7 @@ public class Zoologico extends javax.swing.JFrame {
             .addGap(0, 338, Short.MAX_VALUE)
         );
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Registros y Entradas");
 
         entrada.setText("Pedir Entrada");
         entrada.addActionListener(new java.awt.event.ActionListener() {
@@ -94,20 +112,76 @@ public class Zoologico extends javax.swing.JFrame {
         jMenu1.add(nuevoAnimal);
 
         leon.setText("Leon");
+        leon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leonActionPerformed(evt);
+            }
+        });
         jMenu1.add(leon);
 
         tigre.setText("Tigre");
+        tigre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tigreActionPerformed(evt);
+            }
+        });
         jMenu1.add(tigre);
 
         elefante.setText("Elefante");
+        elefante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elefanteActionPerformed(evt);
+            }
+        });
         jMenu1.add(elefante);
 
         orangutan.setText("Orangutan");
+        orangutan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orangutanActionPerformed(evt);
+            }
+        });
         jMenu1.add(orangutan);
 
         jMenu2.add(jMenu1);
 
         jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Reportes");
+
+        reporteEntrada.setText("Reporte de entradas");
+        reporteEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteEntradaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(reporteEntrada);
+
+        reporteVisitante.setText("Reporte de visitantes");
+        reporteVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteVisitanteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(reporteVisitante);
+
+        reportAmb.setText("Reporte de ambientes");
+        reportAmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportAmbActionPerformed(evt);
+            }
+        });
+        jMenu3.add(reportAmb);
+
+        repAnimales.setText("Reporte de animales");
+        repAnimales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repAnimalesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(repAnimales);
+
+        jMenuBar2.add(jMenu3);
 
         setJMenuBar(jMenuBar2);
 
@@ -153,6 +227,62 @@ public class Zoologico extends javax.swing.JFrame {
         nuevo.setVisible(true);
     }//GEN-LAST:event_nuevoAnimalActionPerformed
 
+    private void reporteEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteEntradaActionPerformed
+        // TODO add your handling code here:
+        REntradaGUI ent = new REntradaGUI();
+        desktop.add(ent);
+        ent.setVisible(true);
+    }//GEN-LAST:event_reporteEntradaActionPerformed
+
+    private void reporteVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteVisitanteActionPerformed
+        // TODO add your handling code here:
+        RVisitanteGUI visit = new RVisitanteGUI();
+        desktop.add(visit);
+        visit.setVisible(true);
+    }//GEN-LAST:event_reporteVisitanteActionPerformed
+
+    private void reportAmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportAmbActionPerformed
+        // TODO add your handling code here:
+        RAmbienteGUI amb = new RAmbienteGUI();
+        desktop.add(amb);
+        amb.setVisible(true);
+    }//GEN-LAST:event_reportAmbActionPerformed
+
+    private void leonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leonActionPerformed
+        // TODO add your handling code here:
+        LeonGUI n = new LeonGUI();
+        desktop.add(n);
+        n.setVisible(true);
+    }//GEN-LAST:event_leonActionPerformed
+
+    private void tigreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tigreActionPerformed
+        // TODO add your handling code here:
+        TigreGUI t = new TigreGUI();
+        desktop.add(t);
+        t.setVisible(true);
+    }//GEN-LAST:event_tigreActionPerformed
+
+    private void elefanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elefanteActionPerformed
+        // TODO add your handling code here:
+        ElefanteGUI fant = new ElefanteGUI();
+        desktop.add(fant);
+        fant.setVisible(true);
+    }//GEN-LAST:event_elefanteActionPerformed
+
+    private void orangutanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orangutanActionPerformed
+        // TODO add your handling code here:
+        OrangutanGUI orange = new OrangutanGUI();
+        desktop.add(orange);
+        orange.setVisible(true);
+    }//GEN-LAST:event_orangutanActionPerformed
+
+    private void repAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repAnimalesActionPerformed
+        // TODO add your handling code here:
+        RAnimalesGUI an = new RAnimalesGUI();
+        desktop.add(an);
+        an.setVisible(true);
+    }//GEN-LAST:event_repAnimalesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -195,10 +325,15 @@ public class Zoologico extends javax.swing.JFrame {
     private javax.swing.JMenuItem entrada;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem leon;
     private javax.swing.JMenuItem nuevoAnimal;
     private javax.swing.JMenuItem orangutan;
+    private javax.swing.JMenuItem repAnimales;
+    private javax.swing.JMenuItem reportAmb;
+    private javax.swing.JMenuItem reporteEntrada;
+    private javax.swing.JMenuItem reporteVisitante;
     private javax.swing.JMenuItem tigre;
     private javax.swing.JMenuItem visita;
     // End of variables declaration//GEN-END:variables

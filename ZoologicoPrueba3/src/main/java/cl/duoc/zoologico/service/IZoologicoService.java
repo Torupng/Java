@@ -34,7 +34,7 @@ public interface IZoologicoService {
     public void EditarEntrada(Entrada e, int i);
 
     //D
-    public void EliminarAnimales(int i);
+    public void EliminarAnimales(Animal an);
     public void EliminarAmbiente(int i);
     public void EliminarVisitante(int i);
     public void EliminarEntrada(int i);

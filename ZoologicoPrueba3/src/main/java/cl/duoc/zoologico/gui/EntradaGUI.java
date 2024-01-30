@@ -4,6 +4,7 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Entrada;
 import cl.duoc.zoologico.models.Visitante;
 import cl.duoc.zoologico.service.IZoologicoService;
@@ -18,7 +19,8 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form EntradaGUI
      */
-    public static IZoologicoService servicio;
+    IZoologicoService servicio = Zoologico.servicio;
+    Entrada entrada = new Entrada();
     public EntradaGUI() {
         initComponents();
         if(servicio == null)
@@ -58,7 +60,7 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Tipo de entrada:");
 
-        cbxTipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Premium", "Normal" }));
+        cbxTipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------", "Premium", "Normal" }));
 
         jLabel2.setText("fecha:");
 
@@ -69,6 +71,7 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
             }
         });
 
+        cbxNombreVisita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", " " }));
         cbxNombreVisita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxNombreVisitaActionPerformed(evt);
@@ -87,7 +90,7 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Desea colación?");
 
-        cbxColacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        cbxColacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", "Si", "No" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +166,6 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        Entrada entrada = new Entrada();
         
         int dia = Integer.parseInt(txtDia.getText());
         int mes = Integer.parseInt(txtMes.getText());
@@ -175,18 +177,22 @@ public class EntradaGUI extends javax.swing.JInternalFrame {
         entrada.setFecha(anio, mes, dia);
         entrada.setTipo(tipo);
         
-        servicio.guardarEntradas(entrada);
+        
+        try{
+            servicio.guardarEntradas(entrada);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cbxNombreVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNombreVisitaActionPerformed
         // TODO add your handling code here:
-        for(Visitante visita : servicio.listaVisita()){
-            String nombre = visita.getNombreCompleto();
-            cbxNombreVisita.addItem(nombre);
-        }
     }//GEN-LAST:event_cbxNombreVisitaActionPerformed
-
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

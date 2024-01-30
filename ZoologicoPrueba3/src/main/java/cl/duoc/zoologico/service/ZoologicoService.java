@@ -17,21 +17,14 @@ import java.util.List;
  */
 public class ZoologicoService implements IZoologicoService{
     
-    List<Animal> listaAn;
-    List<Ambiente> listaAmb;
-    List<Visitante> listaVisita;
-    List<Entrada> listaEntrada;
-    
-    public void ZoologicoService(){
-        listaAn = new ArrayList();
-        listaAmb = new ArrayList();
-        listaVisita = new ArrayList();
-        listaEntrada = new ArrayList();
-    }
+    List<Animal> listaAn = new ArrayList();
+    List<Ambiente> listaAmb = new ArrayList();
+    List<Visitante> listaVisita = new ArrayList();
+    List<Entrada> listaEntrada = new ArrayList();
 
     @Override
     public void guardarAnimales(Animal animal) {
-        this.listaAn.add(animal);
+            this.listaAn.add(animal);
     }
 
     @Override
@@ -95,8 +88,8 @@ public class ZoologicoService implements IZoologicoService{
     }
 
     @Override
-    public void EliminarAnimales(int i) {
-        this.listaAn.remove(i);
+    public void EliminarAnimales(Animal an) {
+        this.listaAn.remove(an);
     }
 
     @Override
@@ -113,5 +106,4 @@ public class ZoologicoService implements IZoologicoService{
     public void EliminarEntrada(int i) {
         this.listaEntrada.remove(i);
     }
-    
 }

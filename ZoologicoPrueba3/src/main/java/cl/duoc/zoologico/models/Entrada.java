@@ -41,8 +41,8 @@ public class Entrada {
         return visita;
     }
 
-    public void setVisita(Visitante visita) {
-        this.visita = visita;
+    public void setVisita(String visita) {
+        visita = this.visita.getRut();
     }
 
     public LocalDate getFecha() {

@@ -27,8 +27,8 @@ public class AnimalLeon extends Animal{
         return dentista;
     }
 
-    public void setDentista(LocalDate dentista) {
-        this.dentista = dentista;
+    public void setDentista(int dia, int mes, int anio) {
+        this.dentista = LocalDate.of(anio, mes, dia);
     }
 
     @Override

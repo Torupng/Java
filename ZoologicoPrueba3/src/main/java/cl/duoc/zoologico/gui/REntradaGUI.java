@@ -4,7 +4,7 @@
  */
 package cl.duoc.zoologico.gui;
 
-import static cl.duoc.zoologico.gui.EntradaGUI.servicio;
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Entrada;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
@@ -19,7 +19,7 @@ public class REntradaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form REntradaGUI
      */
-    IZoologicoService servicio = EntradaGUI.servicio;
+    IZoologicoService servicio = Zoologico.servicio;
     public REntradaGUI() {
         initComponents();
         if(servicio == null)
@@ -87,13 +87,11 @@ public class REntradaGUI extends javax.swing.JInternalFrame {
 
     public void lista(){
         DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("Rut del visitante");
-        tabla.addColumn("Numero de telefóno");
-        tabla.addColumn("Nombre");
-        tabla.addColumn("Dirección");
-        tabla.addColumn("Edad");
-        tabla.addColumn("Estado civil");
-        tabla.addColumn("Correo electronico");
+        tabla.addColumn("Codigo de entrada");
+        tabla.addColumn("Visitante");
+        tabla.addColumn("Fecha");
+        tabla.addColumn("Tipo de entrada");
+        tabla.addColumn("Trae colación?");
         tblEntradas.setModel(tabla);
     
         for(Entrada entrada : servicio.listaEntrada()){

@@ -4,7 +4,9 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.Ambiente;
+import cl.duoc.zoologico.models.Animal;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +20,7 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form RAmbienteGUI
      */
-    IZoologicoService servicio = AmbienteGUI.servicio;
+    IZoologicoService servicio = Zoologico.servicio;
     public RAmbienteGUI() {
         initComponents();
         if(servicio == null)
@@ -38,6 +40,7 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAmbientes = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -59,6 +62,8 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
 
         btnEliminar.setText("Eliminar");
 
+        btnEditar.setText("Editar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,18 +71,23 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEliminar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEditar)
+                        .addGap(87, 87, 87)
+                        .addComponent(btnEliminar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnEliminar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEditar))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,17 +95,18 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
     
     public void lista(){
         DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("Nombre animal");
+        tabla.addColumn("N°Chip");
         tabla.addColumn("Sector");
         tabla.addColumn("Nombre de la jaula");
         tabla.addColumn("Mantención de la jaula");
         tabla.addColumn("Ecosistema en el que vive");
-        tabla.addColumn("Descripción");
+        tabla.addColumn("Descripción del ambiente");
         tblAmbientes.setModel(tabla);
+         
     
         for(Ambiente ambiente : servicio.listaAmb()){
         Object[] fila = {
-        ambiente.getListaAnimal().get(1),
+        ambiente.getChip(),
         ambiente.getSector(),
         ambiente.getNombreJaula(),
         ambiente.getMantencion(),
@@ -106,6 +117,7 @@ public class RAmbienteGUI extends javax.swing.JInternalFrame {
     }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAmbientes;

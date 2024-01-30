@@ -13,7 +13,8 @@ import java.util.List;
  * @author mangl
  */
 public class Ambiente {
-    private List<Animal> listaAnimal;
+    Animal an = new Animal();
+    private int chip;
     private String sector;
     private String nombreJaula;
     private String descripcion;
@@ -21,7 +22,7 @@ public class Ambiente {
     private final int ecosistema;
 
     public Ambiente() {
-        this.listaAnimal = new ArrayList();
+        this.chip = 0;
         this.sector = "";
         this.nombreJaula = "";
         this.descripcion = "";
@@ -29,8 +30,8 @@ public class Ambiente {
         this.ecosistema = 1;
     }
     
-    public Ambiente(List<Animal> listaAnimal, String sector, String nombreJaula, String descripcion, LocalDate mantencion, int ecosistema) {
-        this.listaAnimal = listaAnimal;
+    public Ambiente(int chip, String sector, String nombreJaula, String descripcion, LocalDate mantencion, int ecosistema) {
+        this.chip = chip;
         this.sector = sector;
         this.nombreJaula = nombreJaula;
         this.descripcion = descripcion;
@@ -38,12 +39,12 @@ public class Ambiente {
         this.ecosistema = ecosistema;
     }
 
-    public List<Animal> getListaAnimal() {
-        return listaAnimal;
+    public int getChip() {
+        return chip = an.getChip();
     }
 
-    public void setListaAnimal(List<Animal> listaAnimal) {
-        this.listaAnimal = listaAnimal;
+    public void setChip(int chip) {
+        this.chip = chip;
     }
 
     public String getSector() {
@@ -110,8 +111,8 @@ public class Ambiente {
 
     @Override
     public String toString() {
-        return "Ambiente{" + "listaAnimal=" + listaAnimal + ", sector=" + sector + ", nombreJaula=" + nombreJaula +
-                ", descripcion=" + descripcion + ", mantencion=" + mantencion + ", ecosistema=" + ecosistema + '}';
+        return "\nAmbiente" + "\nChip:" + chip+ "\nSector=" + sector + "\nNombreJaula=" + nombreJaula +
+                "\nDescripcion=" + descripcion + "\nMantencion=" + mantencion + "\nEcosistema=" + ecosistema + "------------------------";
     }
 
     

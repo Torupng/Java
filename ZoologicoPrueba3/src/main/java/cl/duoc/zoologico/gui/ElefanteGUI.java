@@ -4,6 +4,7 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.AnimalElefante;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
@@ -17,8 +18,11 @@ public class ElefanteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ElefanteGUI
      */
+    IZoologicoService servicio = Zoologico.servicio;
     public ElefanteGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -181,7 +185,6 @@ public class ElefanteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService serv = new ZoologicoService();
         AnimalElefante anim = new AnimalElefante();
 
         int chip = Integer.parseInt(txtChip.getText());
@@ -194,11 +197,18 @@ public class ElefanteGUI extends javax.swing.JInternalFrame {
         anim.setChip(chip);
         anim.setDescripcion(descrip);
         anim.setNombre(nombre);
+        anim.setTipoAnimal("Elefante");
         anim.setTipoClima(clima);
         anim.setEdad(edad);
         anim.setTonelaje(tonelaje);
-
-        serv.guardarAnimales(anim);
+        
+        try{
+            servicio.guardarAnimales(anim);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

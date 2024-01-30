@@ -63,7 +63,21 @@ public class Animal {
     }
     
     public void setTipoAnimal(String tipoAnimal){
-        this.tipoAnimal = tipoAnimal;
+        switch(tipoAnimal){
+            case "León":
+                this.tipoAnimal = "León";
+                break;
+            case "Tigre":
+                this.tipoAnimal = "Tigre";
+                break;
+            case "Elefante":
+                this.tipoAnimal = "Elefante";
+                break;
+            case "Orangutan":
+                this.tipoAnimal = "Orangutan";
+            default:
+                this.tipoAnimal = tipoAnimal;
+        }
     }
 
     public String getTipoClima() {
@@ -84,7 +98,7 @@ public class Animal {
     
     @Override
     public String toString(){
-        String mensaje = "Numero de resgistro:"+chip+"\nNombre:"+nombre
+        String mensaje = "\nN°Chip:"+chip+"\nNombre:"+nombre
                 +"\nEdad:"+edad+"\nTipo animal:"+tipoAnimal+"\nTipo de clima donde vive:"+tipoClima
                 +"\nDescripcion breve:"+descripcion+"\n------------------------------------";
         

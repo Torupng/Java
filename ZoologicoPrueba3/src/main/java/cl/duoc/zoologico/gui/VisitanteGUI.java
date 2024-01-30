@@ -71,7 +71,7 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Estado civil:");
 
-        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casado(a)", "Soltero(a)" }));
+        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----------", "Casado(a)", "Soltero(a)" }));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +184,6 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService service = new ZoologicoService();
         Visitante visita = new Visitante();
         
         String rut = txtRut.getText();
@@ -203,7 +202,12 @@ public class VisitanteGUI extends javax.swing.JInternalFrame {
         visita.setEstadoCivil(estadoCivil);
         visita.setCorreoElectronico(correo);
         
-        service.guardarVisitantes(visita);
+        try{
+            servicio.guardarVisitantes(visita);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

@@ -176,6 +176,7 @@ public class AnimalGUI extends javax.swing.JInternalFrame {
         
         int chip = Integer.parseInt(txtChip.getText());
         String nombre = txtNombre.getText();
+        String tipo = txtTipo.getText();
         String clima = txtClima.getText();
         String descrip = txtDescripcion.getText();
         int edad = Integer.parseInt(txtEdad.getText());
@@ -184,10 +185,18 @@ public class AnimalGUI extends javax.swing.JInternalFrame {
         anim.setChip(chip);
         anim.setDescripcion(descrip);
         anim.setNombre(nombre);
+        anim.setTipoAnimal(tipo);
         anim.setTipoClima(clima);
         anim.setEdad(edad);
         
-        servicio.guardarAnimales(anim);
+        
+        try{
+            servicio.guardarAnimales(anim);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed

@@ -40,7 +40,7 @@ public class Visitante {
     }
 
     public String getRut() {
-        return rut;
+        return this.rut;
     }
 
     public void setRut(String rut) {

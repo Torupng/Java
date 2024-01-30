@@ -6,6 +6,7 @@ cl\duoc\zoologico\Zoologico$3.class
 cl\duoc\zoologico\gui\LeonGUI.class
 cl\duoc\zoologico\service\ZoologicoService.class
 cl\duoc\zoologico\gui\TigreGUI$2.class
+cl\duoc\zoologico\Zoologico$10.class
 cl\duoc\zoologico\gui\VisitanteGUI.class
 cl\duoc\zoologico\gui\ElefanteGUI.class
 cl\duoc\zoologico\models\Ambiente.class
@@ -19,6 +20,8 @@ cl\duoc\zoologico\gui\TigreGUI$4.class
 cl\duoc\zoologico\gui\LeonGUI$1.class
 cl\duoc\zoologico\gui\RVisitanteGUI.class
 cl\duoc\zoologico\gui\TigreGUI$1.class
+cl\duoc\zoologico\Zoologico$7.class
+cl\duoc\zoologico\Zoologico$11.class
 cl\duoc\zoologico\gui\EntradaGUI$1.class
 cl\duoc\zoologico\gui\ElefanteGUI$3.class
 cl\duoc\zoologico\Zoologico$1.class
@@ -29,9 +32,11 @@ cl\duoc\zoologico\gui\EntradaGUI.class
 cl\duoc\zoologico\gui\RAnimalesGUI$1.class
 cl\duoc\zoologico\gui\OrangutanGUI$1.class
 cl\duoc\zoologico\models\Entrada.class
+cl\duoc\zoologico\Zoologico$12.class
 cl\duoc\zoologico\Zoologico.class
 cl\duoc\zoologico\gui\AnimalGUI$3.class
 cl\duoc\zoologico\gui\AnimalGUI.class
+cl\duoc\zoologico\Zoologico$8.class
 cl\duoc\zoologico\gui\LeonGUI$2.class
 cl\duoc\zoologico\models\Animal.class
 cl\duoc\zoologico\gui\TigreGUI.class
@@ -40,7 +45,9 @@ cl\duoc\zoologico\gui\REntradaGUI.class
 cl\duoc\zoologico\gui\ElefanteGUI$2.class
 cl\duoc\zoologico\gui\EntradaGUI$2.class
 cl\duoc\zoologico\gui\RAnimalesGUI.class
+cl\duoc\zoologico\Zoologico$13.class
 cl\duoc\zoologico\gui\AnimalGUI$2.class
+cl\duoc\zoologico\Zoologico$6.class
 cl\duoc\zoologico\models\Visitante.class
 cl\duoc\zoologico\models\AnimalTigre.class
 cl\duoc\zoologico\Zoologico$2.class
@@ -49,5 +56,6 @@ cl\duoc\zoologico\gui\ElefanteGUI$1.class
 cl\duoc\zoologico\gui\OrangutanGUI$2.class
 cl\duoc\zoologico\models\AnimalElefante.class
 cl\duoc\zoologico\utils\Validacion.class
+cl\duoc\zoologico\Zoologico$9.class
 cl\duoc\zoologico\gui\LeonGUI$3.class
 cl\duoc\zoologico\gui\TigreGUI$3.class

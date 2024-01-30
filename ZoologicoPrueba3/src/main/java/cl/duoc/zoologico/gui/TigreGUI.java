@@ -4,9 +4,11 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.AnimalTigre;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
+import cl.duoc.zoologico.utils.Validacion;
 
 /**
  *
@@ -17,8 +19,11 @@ public class TigreGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form TigreGUI
      */
+    IZoologicoService servicio = Zoologico.servicio;
     public TigreGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -201,7 +206,6 @@ public class TigreGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService serv = new ZoologicoService();
         AnimalTigre anim = new AnimalTigre();
 
         int chip = Integer.parseInt(txtChip.getText());
@@ -215,12 +219,19 @@ public class TigreGUI extends javax.swing.JInternalFrame {
         anim.setChip(chip);
         anim.setDescripcion(descrip);
         anim.setNombre(nombre);
+        anim.setTipoAnimal("Tigre");
         anim.setTipoClima(clima);
         anim.setEdad(edad);
         anim.setOrigen(origen);
         anim.setCodigoGatuno(codigo);
-
-        serv.guardarAnimales(anim);
+        
+        
+        try{
+            servicio.guardarAnimales(anim);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

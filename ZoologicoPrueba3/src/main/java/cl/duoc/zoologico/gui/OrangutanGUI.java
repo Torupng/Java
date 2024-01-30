@@ -4,6 +4,7 @@
  */
 package cl.duoc.zoologico.gui;
 
+import cl.duoc.zoologico.Zoologico;
 import cl.duoc.zoologico.models.AnimalOrangutan;
 import cl.duoc.zoologico.service.IZoologicoService;
 import cl.duoc.zoologico.service.ZoologicoService;
@@ -17,8 +18,12 @@ public class OrangutanGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form OrangutanGUI
      */
+    
+    IZoologicoService servicio = Zoologico.servicio;
     public OrangutanGUI() {
         initComponents();
+        if(servicio == null)
+            servicio =  new ZoologicoService();
     }
 
     /**
@@ -186,7 +191,6 @@ public class OrangutanGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        IZoologicoService serv = new ZoologicoService();
         AnimalOrangutan anim = new AnimalOrangutan();
 
         int chip = Integer.parseInt(txtChip.getText());
@@ -199,11 +203,17 @@ public class OrangutanGUI extends javax.swing.JInternalFrame {
         anim.setChip(chip);
         anim.setDescripcion(descrip);
         anim.setNombre(nombre);
+        anim.setTipoAnimal("Orangutan");
         anim.setTipoClima(clima);
         anim.setEdad(edad);
         anim.setMeses(mes);
 
-        serv.guardarAnimales(anim);
+        try{
+            servicio.guardarAnimales(anim);
+            System.out.println("guardado");
+        }catch(Exception e){
+            System.out.println("AAAAAAAAAA");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
